@@ -1,0 +1,36 @@
+＃include <graphics.h>
+　　main(){
+　　int orgData[100][100],resData[100][100];／＊分别记录每次迭代的初始和结果状态＊／
+　　int nCount,nRows,nCols,i,j,times; ／＊times记录迭代次数＊／
+　　int GraphDriver=DETECT,GraphMode;
+　　for (i=0;i<100;i＋＋) ／＊初始化数据，令每一个细胞为生＊／
+　　for (j=0;j<100;j＋＋) orgData[i][j]=1;
+　　initgraph(&GraphDriver,&GraphMode,′′′′); ／＊初始化屏幕显示＊／
+　　setcolor(WHITE);
+　　rectangle(270,190,370,290); ／＊作显示边框＊／
+　　for (times=1;times<200;times＋＋){
+　　for (nRows=1;nRows<99;nRows＋＋) {
+　　for (nCols=1;nCols<99;nCols＋＋){
+　　／＊计算每一个细胞周围的活的细胞数＊／
+　　nCount=orgData[nRows－1][nCols－1]＋orgData[nRows－1][nCols]
+　　＋orgData[nRows－1][nCols＋1]＋orgData[nRows][nCols－1]
+　　＋orgData[nRows][nCols＋1]＋orgData[nRows＋1][nCols－1]
+　　＋orgData[nRows＋1][nCols]＋orgData[nRows＋1][nCols＋1];
+　　switch(nCount){
+　　／＊周围有3个活细胞，该细胞为生，在屏幕上用黑色像素表示＊
+　　case 3: putpixel(nCols＋210,120＋nRows,BLACK);
+　　resData[nRows][nCols]=1;break;
+　　／＊周围有2个活细胞，该细胞不变，在屏幕显示也不变＊／
+　　case 2: resData[nRows][nCols]=orgData[nRows][nCols];
+　　break;
+　　／＊其它情况下，细胞为死，在屏幕上用白色像素表示＊／
+　　default:resData[nRows][nCols]=0;
+　　putpixel(nCols＋210,120＋nRows,WHITE);
+　　}
+　　}
+　　}
+　　for (i=1;i<99;i＋＋)
+　　for (j=1;j<99;j＋＋) orgData[i][j]=resData[i][j];
+　　getch();
+　　}
+　　}

@@ -1,0 +1,328 @@
+附录一:Turbo C(V2.0)编译错误信息
+
+
+编译错误信息
+
+　　说明：Turbo C 的源程序错误分为三种类型：致命错误、一般错误和警告。其中，致命错误通常是内部编译出错；一般错误指程序的语法错误、磁盘或内存存取错误或命令行错误等；警告则只是指出一些得怀疑的情况，它并不防止编译的进行。
+
+　　下面按字母顺序A～Z分别列出致命错误及一般错误信息，英汉对照及处理方法：
+
+(一)、致命错误英汉对照及处理方法：
+
+Ａ－Ｂ致命错误
+
+Bad call of in-line function (内部函数非法调用)
+分析与处理：在使用一个宏定义的内部函数时，没能正确调用。一个内部函数以两个下划线(__)开始和结束。
+
+Irreducable expression tree (不可约表达式树)
+分析与处理：这种错误指的是文件行中的表达式太复杂，使得代码生成程序无法为它生成代码。这种表达式必须避免使用。
+
+Register allocation failure (存储器分配失败)
+分析与处理：这种错误指的是文件行中的表达式太复杂，代码生成程序无法为它生成代码。此时应简化这种繁杂的表达式或干脆避免使用它。
+
+(二)、一般错误信息英汉照及处理方法
+
+#operator not followed by maco argument name(#运算符后没跟宏变元名)
+分析与处理：在宏定义中，#用于标识一宏变串。“#”号后必须跟一个宏变元名。
+
+'xxxxxx' not anargument ('xxxxxx'不是函数参数)
+分析与处理：在源程序中将该标识符定义为一个函数参数，但此标识符没有在函数中出现。
+
+Ambiguous symbol 'xxxxxx' (二义性符号'xxxxxx')
+分析与处理：两个或多个结构的某一域名相同，但具有的偏移、类型不同。在变量或表达式中引用该域而未带结构名时，会产生二义性，此时需修改某个域名或在引用时加上结构名。
+
+Argument # missing name (参数#名丢失)
+分析与处理：参数名已脱离用于定义函数的函数原型。如果函数以原型定义，该函数必须包含所有的参数名。
+
+Argument list syntax error (参数表出现语法错误)
+分析与处理：函数调用的参数间必须以逗号隔开，并以一个右括号结束。若源文件中含有一个其后不是逗号也不是右括号的参数，则出错。
+
+Array bounds missing (数组的界限符"]"丢失)
+分析与处理：在源文件中定义了一个数组，但此数组没有以下右方括号结束。
+
+Array size too large (数组太大)
+分析与处理：定义的数组太大，超过了可用内存空间。
+
+Assembler statement too long (汇编语句太长)
+分析与处理：内部汇编语句最长不能超过480字节。
+
+Bad configuration file (配置文件不正确)
+分析与处理：TURBOC.CFG配置文件中包含的不是合适命令行选择项的非注解文字。配置文件命令选择项必须以一个短横线开始。
+
+Bad file name format in include directive(包含指令中文件名格式不正确)
+分析与处理：包含文件名必须用引号("filename.h")或尖括号(<filename>)括起来，否则将产生本类错误。如果使用了宏，则产生的扩展文本也不正确，因为无引号没办法识别。
+
+Bad ifdef directive syntax (ifdef指令语法错误)
+分析与处理：#ifdef必须以单个标识符(只此一个)作为该指令的体。
+
+Bad ifndef directive syntax (ifndef指令语法错误)
+分析与处理：#ifndef 必须以单个标识符(只此一个)作为该指令的体。
+
+Bad undef directive syntax (undef指令语法错误)
+分析与处理：#undef指令必须以单个标识符(只此一个)作为该指令的体。
+
+Bad file size syntax (位字段长语法错误)
+分析与处理：一个位字段长必须是1—16位的常量表达式。
+
+Call of non-functin (调用未定义函数)
+分析与处理：正被调用的函数无定义，通常是由于不正确的函数声明或函数名拼错而造成。
+
+Cannot modify a const object (不能修改一个长量对象)
+分析与处理：对定义为常量的对象进行不合法操作(如常量赋值)引起本错误。
+
+Case outside of switch (Case 出现在switch外)
+分析与处理：编译程序发现Case语句出现在switch语句之外，这类故障通常是由于括号不匹配造成的。
+
+Case statement missing (Case语句漏掉)
+分析与处理：Case语必须包含一个以冒号结束的常量表达式，如果漏了冒号或在冒号前多了其它符号，则会出现此类错误。
+
+Character constant too long (字符常量太长)
+分析与处理：字符常量的长度通常只能是一个或两个字符长，超过此长度则会出现这种错误。
+
+Compound statement missing (漏掉复合语句)
+分析与处理：编译程序扫描到源文件未时，未发现结束符号 (大括号)，此类故障通常是由于大括号不匹配所致。
+
+Conflicting type modifiers (类型修饰符冲突)
+分析与处理：对同一指针，只能指定一种变址修饰符(如near 或far)；而对于同一函数，也只能给出一种语言修饰符(如Cdecl、pascal或interrupt)。
+
+Constant expression required (需要常量表达式)
+分析与处理：数组的大小必须是常量，本错误通常是由于#define常量的拼写错误引起。
+
+Could not find file 'xxxxxx.xxx' (找不到'xxxxxx.xx'文件)
+分析与处理：编译程序找不到命令行上给出的文件。 
+
+Declaration missing (漏掉了说明)
+分析与处理：当源文件中包含了一个struct或 union域声明，而后面漏掉了分号，则会出现此类错误。
+
+Declaration needs type or storage class(说明必须给出类型或存储类)
+分析与处理：正确的变量说明必须指出变量类型，否则会出现此类错误。
+
+Declaration syntax error (说明出现语法错误)
+分析与处理：在源文件中，若某个说明丢失了某些符号或输入多余的符号，则会出现此类错误。
+
+Default outside of switch (Default语句在switch语句外出现)
+分析与处理：这类错误通常是由于括号不匹配引起的。
+
+Define directive needs an identifier (Define指令必须有一个标识符)
+分析与处理：#define 后面的第一个非空格符必须是一个标识符，若该位置出现其它字符，则会引起此类错误。
+
+Division by zero (除数为零)
+分析与处理：当源文件的常量表达式出现除数为零的情况，则会造成此类错误。
+
+Do statement must have while (do语句中必须有While关键字)
+分析与处理：若源文件中包含了一个无While关键字的 do语句，则出现本错误。
+
+DO while statement missing ( (Do while语句中漏掉了符号 "(")
+分析与处理：在do语句中，若 while关键字后无左括号，则出现本错误。
+
+Do while statement missing；(Do while语句中掉了分号)
+分析与处理：在DO语句的条件表达式中，若右括号后面无分号则出现此类错误。
+
+Duplicate Case (Case情况不唯一)
+分析与处理：Switch语句的每个case必须有一个唯一的常量表达式值。否则导致此类错误发生。
+
+Enum syntax error (Enum语法错误)
+分析与处理：若enum说明的标识符表格式不对，将会引起此类错误发生。
+
+Enumeration constant syntax error (枚举常量语法错误)
+分析与处理：若赋给enum类型变量的表达式值不为常量，则会导致此类错误发生。
+
+Error Directive : xxxx (Error指令：xxxx)
+分析与处理：源文件处理#error指令时，显示该指令指出的信息。
+
+Error Writing output file (写输出文件错误)
+分析与处理：这类错误通常是由于磁盘空间已满，无法进行写入操作而造成。
+
+Expression syntax error (表达式语法错误)
+分析与处理：本错误通常是由于出现两个连续的操作符，括号不匹配或缺少括号、前一语句漏掉了分号引起的。
+
+Extra parameter in call (调用时出现多余参数)
+分析与处理：本错误是由于调用函数时，其实际参数个数多于函数定义中的参数个数所致。
+
+Extra parameter in call to xxxxxx(调用xxxxxxxx函数时出现了多余参数)
+
+File name too long (文件名太长)
+分析与处理：#include指令给出的文件名太长，致使编译程序无法处理，则会出现此类错误。通常DOS下的文件名长度不能超过 64个字符。
+
+For statement missing ) (For语名缺少")")
+分析与处理：在 for语句中，如果控制表达式后缺少右括号，则会出现此类错误。
+
+For statement missing( (For语句缺少"(")
+
+For statement missing; (For 语句缺少"；")
+分析与处理：在 for语句中，当某个表达式后缺少分号，则会出现此类错误。
+
+Function call missing) (函数调用缺少")")
+分析与处理：如果函数调用的参数表漏掉了右手括号或括号不匹配，则会出现此类错误。
+
+Function definition out ofplace (函数定义位置错误)
+
+Function doesn't take a variable number of argument(函数不接受可变的参数个数)
+
+Goto statement missing label (Goto语句缺少标号)
+
+If statement missing( (If语句缺少"(")
+
+If statement missing) (If语句缺少")")
+
+lllegal initalization (非法初始化)
+
+lllegal octal digit (非法八进制数)
+分析与处理：此类错误通常是由于八进制常数中包含了非八进制数字所致。
+
+lllegal pointer subtraction (非法指针相减)
+
+lllegal structure operation (非法结构操作)
+
+lllegal use of floating point (浮点运算非法)
+
+lllegal use of pointer (指针使用非法)
+
+Improper use of a typedef symbol (typedef符号使用不当)
+
+Incompatible storage class (不相容的存储类型)
+
+Incompatible type conversion (不相容的类型转换)
+
+Incorrect commadn line argument:xxxxxx (不正确的命令行参数：xxxxxxx)
+
+Incorrect commadn file argument:xxxxxx (不正确的配置文件参数：xxxxxxx)
+
+Incorrect number format (不正确的数据格式)
+
+Incorrect use of default (deflult不正确使用)
+
+Initializer syntax error (初始化语法错误)
+
+Invaild indrection (无效的间接运算)
+
+Invalid macro argument separator (无效的宏参数分隔符)
+
+Invalid pointer addition (无效的指针相加)
+
+Invalid use of dot (点使用错)
+
+Macro argument syntax error (宏参数语法错误)
+
+Macro expansion too long (宏扩展太长)
+
+Mismatch number of parameters in definition(定义中参数个数不匹配)
+
+Misplaced break (break位置错误)
+
+Misplaced continue (位置错)
+
+Misplaced decimal point (十进制小数点位置错)
+
+Misplaced else (else 位置错)
+
+Misplaced else driective (clse指令位置错)
+
+Misplaced endif directive (endif指令位置错)
+
+Must be addressable (必须是可编址的)
+
+Must take address of memory location (必须是内存一地址)
+
+No file name ending (无文件终止符)
+
+No file names given (未给出文件名)
+
+Non-protable pointer assignment (对不可移植的指针赋值)
+
+Non-protable pointer comparison (不可移植的指针比较)
+
+Non-protable return type conversion (不可移植的返回类型转换)
+
+Not an allowed type (不允许的类型)
+
+Out of memory (内存不够)
+
+Pointer required on left side of (操作符左边须是一指针)
+
+Redeclaration of 'xxxxxx' ('xxxxxx'重定义)
+
+Size of structure or array not known (结构或数组大小不定)
+
+Statement missing； (语句缺少“；”)
+
+Structure or union syntax error (结构或联合语法错误)
+
+Structure size too large (结构太大)
+
+Subscription missing ] (下标缺少‘]’)
+
+Switch statement missing ( (switch 语句缺少"(")
+
+Switch statement missing ) (switch 语句缺少")")
+
+Too few parameters in call (函数调用参数太少)
+
+Too few parameter in call to'xxxxxx'(调用'xxxxxx'时参数太少)
+
+Too many cases (Cases太多)
+
+Too many decimal points (十进制小数点太多)
+
+Too many default cases (defaut太多)
+
+Too many exponents (阶码太多)
+
+Too many initializers (初始化太多)
+
+Too many storage classes in declaration (说明中存储类太多)
+
+Too many types in decleration (说明中类型太多)
+
+Too much auto memory in function (函数中自动存储太多)
+
+Too much global define in file (文件中定义的全局数据太多)
+
+Two consecutive dots (两个连续点)
+
+Type mismatch in parameter # (参数"#"类型不匹配)
+
+Type mismatch in parameter # in call to 'XXXXXXX' (调用'XXXXXXX'时参数#类型不匹配)
+
+Type missmatch in parameter 'XXXXXXX' (参数'XXXXXXX'类型不匹配)
+
+Type mismatch in parameter 'YYYYYYYY' in call to 'YYYYYYYY'(调用'YYYYYYY'时参数'XXXXXXXX'数型不匹配)
+
+Type mismatch in redeclaration of 'XXX' (重定义类型不匹配)
+
+Unable to creat output file 'XXXXXXXX.XXX' (不能创建输出文件'XXXXXXXX.XXX')
+
+Unable to create turboc.lnk (不能创建turboc.lnk )
+
+Unable to execute command 'xxxxxxxx'(不能执行'xxxxxxxx'命令)
+
+Unable to open include file 'xxxxxxx.xxx' (不能打开包含文件'xxxxxxxx.xxx')
+
+Unable to open inputfile 'xxxxxxx.xxx' (不能打开输入文件'xxxxxxxx.xxx')
+
+Undefined label 'xxxxxxx' (标号'xxxxxxx'未定义)
+
+Undefined structure 'xxxxxxxxx' (结构'xxxxxxxxxx'未定义)
+
+Undefined symbol 'xxxxxxx' (符号'xxxxxxxx'未定义)
+
+Unexpected end of file in comment started on line #(源文件在某个注释中意外结束)
+
+Unexpected end of file in conditional stated on line # (源文件在#行开始的条件语句中意外结束)
+
+Unknown preprocessor directive 'xxx' (不认识的预处理指令：'xxx')Untermimated character constant (未终结的字符常量)
+
+Unterminated string (未终结的串)
+
+Unterminated string or character constant(未终结的串或字符常量)
+
+User break (用户中断)
+
+Value required (赋值请求)
+
+While statement missing ( (While语句漏掉 '(')
+
+While statement missing ) (While语句漏掉 ')')
+
+Wrong number of arguments in of 'xxxxxxxx' (调用'xxxxxxxx'时参数个数错误)
+
